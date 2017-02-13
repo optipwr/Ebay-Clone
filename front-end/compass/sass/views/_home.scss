@@ -1,0 +1,23 @@
+// -------------------------------
+// _HOME.SCSS
+// Home View Styling
+// -------------------------------
+
+*{
+	color: black;
+}
+
+.box {
+ 	@include border-radius(10px);
+ 	background-color: green;
+ }
+
+.circle {
+	@include border-radius(50%);
+	background-color: green;
+}
+
+.square {
+	@include border-radius(0px);
+	background-color: green;
+}

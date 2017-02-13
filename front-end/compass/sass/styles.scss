@@ -1,0 +1,42 @@
+// Variables
+@import "configs/variables.scss";
+@import "configs/mixins.scss";
+
+// Layout
+@import "layout/layout.scss";
+@import "layout/header.scss";
+@import "layout/footer.scss";
+
+// Pages/Views
+@import "views/home.scss";
+
+#parent{
+	width: 75%;
+	float: left;
+	background-color: red;
+	.child{
+		width: 50%;
+		margin: auto;
+		background-color: white;
+		ul{
+			list-style: none;
+			li{
+				font-size: 20px;
+				color: red;
+			}
+		}
+	}
+}
+
+#parent2{
+	width: 25%;
+	float: left;
+	background-color: blue;
+	li{
+		font-size: 60px;
+		color: white;
+	}
+}
+
+
+
