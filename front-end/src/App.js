@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-class EachItem extends Component {
+class EachItemInFrontPage extends Component {
     render() {
     	return(
-    		<div className='each-item-wrapper'>
+    		<div classsName='each-item-wrapper'>
     			<div className='col-md-4 each-item-image '><img src ='http://placehold.it/350x250'/></div>
-    			<div className='col-md-8 each-item-description '>
+    			<div className='col-md-7 col-md-offset-1 each-item-description '>
     				16 Week Immersive BootcampAtlanta Tech VillageMeeting daysMon Tue Wed Thu Fri
     				16 Week Immersive BootcampAtlanta Tech VillageMeeting daysMon Tue Wed Thu Fri
     				16 Week Immersive BootcampAtlanta Tech VillageMeeting daysMon Tue Wed Thu Fri
@@ -28,9 +28,9 @@ class App extends Component {
             			<button className='btn btn-primary'>Search</button>
             		</div>
             		<div className='body-content-wrapper'>
-            			<EachItem />
-            			<EachItem />
-            			<EachItem />
+            			<EachItemInFrontPage />
+            			<EachItemInFrontPage />
+            			<EachItemInFrontPage />
             		</div>
             	</div>
 			</div>
