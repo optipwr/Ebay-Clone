@@ -1,42 +1,52 @@
-// Variables
-@import "configs/variables.scss";
-@import "configs/mixins.scss";
+@import "./styles2.scss";
 
-// Layout
-@import "layout/layout.scss";
-@import "layout/header.scss";
-@import "layout/footer.scss";
+body{
+	background-color: blue;
+	overflow-x:hidden;
+}
 
-// Pages/Views
-@import "views/home.scss";
+$nav-bar-height: 50px;
 
-#parent{
-	width: 75%;
-	float: left;
-	background-color: red;
-	.child{
-		width: 50%;
-		margin: auto;
-		background-color: white;
-		ul{
-			list-style: none;
-			li{
-				font-size: 20px;
-				color: red;
+.ebay-wrapper{
+	background-color: white;
+	min-height: 100vh;
+	.sign-in-nav-bar-wrapper{
+		z-index: 200;
+		position: fixed;
+		width:100vw;
+		background-color: yellow;
+		left:0;
+		top:0;
+		height: $nav-bar-height;
+		line-height:$nav-bar-height;
+	}	
+	.body-wrapper{
+		padding-top:$nav-bar-height;
+		.search-bar-wrapper{
+			background-color: green;
+		}
+		.body-content-wrapper{
+			.each-item-wrapper{
+				height:300px;
+				min-width: 1px;
+				margin-top:20px;
+				background-color: grey;
+				display: flex;
+				flex-direction: row;
+				align-items:center;
+				justify-content:flex-start;
+				.each-item-image{
+					display: inline-block;
+				}
+				.each-item-description{
+					// display: inline-block;
+					display: flex;
+					align-items:center;
+					justify-content:flex-start;
+				}
 			}
+
 		}
 	}
 }
-
-#parent2{
-	width: 25%;
-	float: left;
-	background-color: blue;
-	li{
-		font-size: 60px;
-		color: white;
-	}
-}
-
-
 

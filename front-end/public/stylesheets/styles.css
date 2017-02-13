@@ -1,0 +1,51 @@
+/* line 3, ../../compass/sass/styles.scss */
+body {
+  background-color: blue;
+  overflow-x: hidden;
+}
+
+/* line 10, ../../compass/sass/styles.scss */
+.ebay-wrapper {
+  background-color: white;
+  min-height: 100vh;
+}
+/* line 13, ../../compass/sass/styles.scss */
+.ebay-wrapper .sign-in-nav-bar-wrapper {
+  z-index: 200;
+  position: fixed;
+  width: 100vw;
+  background-color: yellow;
+  left: 0;
+  top: 0;
+  height: 50px;
+  line-height: 50px;
+}
+/* line 23, ../../compass/sass/styles.scss */
+.ebay-wrapper .body-wrapper {
+  padding-top: 50px;
+}
+/* line 25, ../../compass/sass/styles.scss */
+.ebay-wrapper .body-wrapper .search-bar-wrapper {
+  background-color: green;
+}
+/* line 29, ../../compass/sass/styles.scss */
+.ebay-wrapper .body-wrapper .body-content-wrapper .each-item-wrapper {
+  height: 300px;
+  min-width: 1px;
+  margin-top: 20px;
+  background-color: grey;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* line 38, ../../compass/sass/styles.scss */
+.ebay-wrapper .body-wrapper .body-content-wrapper .each-item-wrapper .each-item-image {
+  display: inline-block;
+}
+/* line 41, ../../compass/sass/styles.scss */
+.ebay-wrapper .body-wrapper .body-content-wrapper .each-item-wrapper .each-item-description {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
