@@ -11,7 +11,7 @@ class Home extends Component {
     }
     componentDidMount(){
       $.getJSON('http://localhost:3000/', (data) => {
-        console.log(data);
+        // console.log(data);
         this.setState({
           message: data.message
         });
