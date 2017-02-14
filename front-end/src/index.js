@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import Product from './components/Product.js';
+import Product from './containers/Product.js';
 import Home from './containers/Home.js';
 import '../public/stylesheets/styles.css';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
