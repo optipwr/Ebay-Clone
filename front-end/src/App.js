@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import Login from './containers/Login.js';
 
 class App extends Component {
     render() {
         return (
             <div className='container ebay-wrapper'>
             	<div className='sign-in-nav-bar-wrapper'>
-            		LOG IN {"/"} Register, My Ebay, Shopping Cart (each are components)
+                    <Login />
             	</div>
             	<div className='body-wrapper'>
             		<div className='search-bar-wrapper'>
