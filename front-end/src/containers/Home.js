@@ -6,16 +6,22 @@ import { connect } from 'react-redux'
 
 class Home extends Component {
     constructor(props){
-		super(props);
+  		super(props);
     }
     componentDidMount() {
     	this.props.FetchItems();
     }
     render() {
-        return (
-			<div className='body-content-wrapper'>
-    			<EachItemInFrontPage message={this.props.items.message}/>	
-    		</div>
+      if(this.props.items.results !== undefined){
+        var items = []
+        this.props.items.results.map(value => {
+          items.push(<EachItemInFrontPage item={value} key={value.id}/>)
+        })
+      }
+      return (
+  			<div className='body-content-wrapper'>
+      		{items}
+      	</div>
         );
     }
 }
@@ -64,7 +70,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Home);
 //     if(this.props.stockData == null){stockData = ''}
 //     // else{stockData = this.props.stockData;};
 //     else{stockData = this.props.stockData.query.results.quote.symbol + ': ' + this.props.stockData.query.results.quote.Bid};
-    
+
 //     // else{stockData = this.props.stockData.query.quote.symbol + ": " + this.props.stockData.query.quote.Bid};
 //     return (
 //       <div>

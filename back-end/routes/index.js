@@ -13,9 +13,20 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send({
-    message: 'home, muhahaha'
-  })
+  const selectQuery = 'SELECT * FROM item';
+  connection.query(selectQuery, (error, results, field) => {
+    if (error) throw error;
+    res.send({ results });
+  });
 });
+
+router.get('/products/:id', function(req, res, next) {
+  const itemId = req.params.id;
+  const selectQuery = `SELECT * FROM item WHERE id=${itemId}`;
+  connection.query(selectQuery, (error, results, field) => {
+    if (error) throw error;
+    res.send({ results });
+  })
+})
 
 module.exports = router;

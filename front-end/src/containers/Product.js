@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import FetchItems from '../actions/FetchItems.js'
+import FetchItemDetails from '../actions/FetchItemDetails.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
@@ -8,12 +8,13 @@ class Product extends Component {
 		super(props);
     }
     componentDidMount() {
-    	this.props.FetchItems();
+    	this.props.FetchItemDetails(this.props.params.id);
+      console.log(this.props)
     }
     render() {
         return (
 			<div className='body-content-wrapper'>
-                {this.props.items.message}
+                {this.props.item.name}
     		</div>
         );
     }
@@ -22,13 +23,13 @@ class Product extends Component {
 // go to all. like the array map function
 function mapStateToProps(state){
 	return{
-		items: state.getItem
+		item: state.getItem.results[0]
 	}
 }
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		FetchItems
+		FetchItemDetails
 		// FetchItems: FetchItems
 	}, dispatch)
 }

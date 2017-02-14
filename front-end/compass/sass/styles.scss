@@ -19,7 +19,7 @@ $nav-bar-height: 50px;
 		top:0;
 		height: $nav-bar-height;
 		line-height:$nav-bar-height;
-	}	
+	}
 	.body-wrapper{
 		padding-top:$nav-bar-height;
 		.search-bar-wrapper{
@@ -36,7 +36,13 @@ $nav-bar-height: 50px;
 				align-items:center;
 				justify-content:flex-start;
 				.each-item-image{
-					display: inline-block;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					img{
+						max-height: 250px;
+						width: auto;
+					}
 				}
 				.each-item-description{
 					// display: inline-block;
@@ -49,4 +55,3 @@ $nav-bar-height: 50px;
 		}
 	}
 }
-
