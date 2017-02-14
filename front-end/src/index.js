@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Product from './containers/Product.js';
 import Home from './containers/Home.js';
+import Login from './containers/Login.js';
 import '../public/stylesheets/styles.css';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
@@ -18,6 +19,7 @@ ReactDOM.render(
 			<Route path="/" component={App}>
 				<IndexRoute component={Home} />
 				<Route path="products/:id" component={Product} />
+				<Route path="login" component={Login} />
 			</Route>
 		</Router>
 	</Provider>,

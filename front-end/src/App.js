@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Login from './containers/Login.js';
+import { Link } from 'react-router';
 
 class App extends Component {
     render() {
         return (
             <div className='container ebay-wrapper'>
             	<div className='sign-in-nav-bar-wrapper'>
-                    <Login />
+                    <Link to="/login">
+                        Log in
+                    </Link>
             	</div>
             	<div className='body-wrapper'>
             		<div className='search-bar-wrapper'>
