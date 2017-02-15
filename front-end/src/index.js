@@ -4,6 +4,7 @@ import App from './App';
 import Product from './containers/Product.js';
 import Home from './containers/Home.js';
 import Login from './containers/Login.js';
+import Register from './containers/Register.js';
 import '../public/stylesheets/styles.css';
 import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
@@ -20,6 +21,7 @@ ReactDOM.render(
 				<IndexRoute component={Home} />
 				<Route path="products/:id" component={Product} />
 				<Route path="login" component={Login} />
+				<Route path="register" component={Register} />
 			</Route>
 		</Router>
 	</Provider>,
