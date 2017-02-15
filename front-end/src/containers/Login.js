@@ -32,7 +32,7 @@ class Login extends Component {
 
     render() {
         return (
-			<form  className="form-inline" action="" method="">
+			<form  className="form-inline" action="/login" method="">
                 <div className="form-group">
                     <label className="sr-only">Sign In</label>
                     <div className="input-group">

@@ -29,4 +29,9 @@ router.get('/products/:id', function(req, res, next) {
   })
 })
 
+// Make a register post route
+router.post('/register', (req, res, next)=>{
+  res.json(req.body)
+});
+
 module.exports = router;
