@@ -33,15 +33,15 @@ router.get('/products/:id', function(req, res, next) {
 router.post('/register', (req, res, next) => {
   const selectQuery = 'SELECT * FROM user WHERE username = ?';
   connection.query(selectQuery,[req.body.username], (error, results, fields) => {
-    console.log(req.body)
+    console.log(results)
     if(results.length === 0){
-      var insertUserQuery = 'INSERT INTO user(username, password) VALUES' +
+      var insertUserQuery = 'INSERT INTO user (username, password) VALUES' +
         "(?,?)";
       connection.query(insertUserQuery, [req.body.username, req.body.password], (error, results, field) => {
         res.json({msg: 'userInserted'})
       })
     }else{
-      rse.json({msg: "userNameTaken"})
+      res.json({msg: "userNameTaken"})
     }
   })
 });

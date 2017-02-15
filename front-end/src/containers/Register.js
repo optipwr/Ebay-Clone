@@ -23,7 +23,7 @@ class Register extends Component {
 
 
 	render(){
-		if(this.props.registerResponse.msg = 'userNameTaken'){
+		if(this.props.registerResponse.msg == 'userNameTaken'){
 			var message = 'User Name is Taken'
 		}else if(this.props.registerResponse.msg == 'userInserted'){
 			var message = 'User was inserted'
