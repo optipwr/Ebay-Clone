@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import EachItemInFrontPage from '../components/EachItemInFrontPage.js'
-import FetchItems from '../actions/FetchItems.js'
+import LoginAction from '../actions/LoginAction.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
@@ -8,38 +8,34 @@ class Login extends Component {
     constructor(props){
 		super(props);
         this.state = {
-            username: '',
-            password: ''
+            loginResponse: ''
         }
-        this.changeUsername = this.changeUsername.bind(this);
-        this.changePassword = this.changePassword.bind(this);
-    }
-    componentDidMount() {
-    	this.props.FetchItems();
+    this.LoginInformation = this.LoginInformation.bind(this);
     }
 
-    changeUsername(event){
-        this.setState({
-            username: event.target.value
-        })
-    }
-
-    changePassword(event){
-        this.setState({
-            password: event.target.value
-        })
+    LoginInformation(event){
+      event.preventDefault();
+      var userName = event.target[0].value;
+      var password = event.target[1].value;
+      this.props.LoginAction({
+        username: userName,
+        password: password
+      })
     }
 
     render() {
+        console.log(this.props.loginResponse.msg)
         return (
-			<form  className="form-inline" action="/login" method="">
+			<form  className="form-inline" onSubmit={this.LoginInformation} method="get">
+              <div className="form-group">
+              </div>
                 <div className="form-group">
                     <label className="sr-only">Sign In</label>
                     <div className="input-group">
-                        <input type="text" className="form-control" value={this.state.username} onChange={this.changeUsername} placeholder="User Name" name="" />
+                        <input type="text" className="form-control" placeholder="User Name" name="" />
                     </div>
                     <div className="input-group">
-                        <input type="password" className="form-control" value={this.state.password} onChange={this.changePassword} placeholder="Password" name="" />
+                        <input type="password" className="form-control" placeholder="Password" name="" />
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary">Sign In</button>
@@ -51,14 +47,13 @@ class Login extends Component {
 // go to all. like the array map function
 function mapStateToProps(state){
 	return{
-		items: state.getItem
+		loginResponse: state.login
 	}
 }
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		FetchItems
-		// FetchItems: FetchItems
+		LoginAction
 	}, dispatch)
 }
 

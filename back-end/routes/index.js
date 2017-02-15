@@ -29,6 +29,18 @@ router.get('/products/:id', function(req, res, next) {
   })
 })
 
+router.get('/login', (req, res, next) => {
+  const selectQuery = 'SELECT * FROM user WHERE username = ?';
+  console.log(req.query.username)
+  connection.query(selectQuery,[req.query.username], (error, results, fields) => {
+    if(results.length === 0){
+      res.json({msg: 'noAccount'})
+    }else{
+      res.json({msg: "loggedIn"})
+    }
+  })
+})
+
 // Make a register post route
 router.post('/register', (req, res, next) => {
   const selectQuery = 'SELECT * FROM user WHERE username = ?';
