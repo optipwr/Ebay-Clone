@@ -38,12 +38,13 @@ class Register extends Component {
 		}
 	}
 	render(){
-		if(this.props.registerResponse.msg == 'userNameTaken'){
-			var message = 'User Name is Taken'
-		}else if(this.props.registerResponse.msg == 'userInserted'){
-			var message = 'Welcome, ' + this.state.name
+		var message
+		if(this.props.registerResponse.msg === 'userNameTaken'){
+			message = 'User Name is Taken'
+		}else if(this.props.registerResponse.msg === 'userInserted'){
+			message = 'Welcome, ' + this.state.name
 		}else{
-			var message = ''
+			message = ''
 		}
 		var passwordMatchString = this.state.passwordMatchString
 		return(

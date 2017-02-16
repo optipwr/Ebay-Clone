@@ -4,12 +4,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 class Product extends Component {
-    constructor(props){
-		super(props);
-    }
     componentDidMount() {
     	this.props.FetchItemDetails(this.props.params.id);
-      console.log(this.props)
+      // console.log(this.props)
     }
     render() {
         return (
@@ -20,7 +17,7 @@ class Product extends Component {
           <div className="col-xs-12">
             <div className="row">
               <div className="col-md-4">
-                <img className="img-responsive" src={this.props.item.image_url}/>
+                <img className="img-responsive" alt='a' src={this.props.item.image_url}/>
               </div>
               <div className="col-md-8">
                 <div className="row">

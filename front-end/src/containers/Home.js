@@ -5,9 +5,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 class Home extends Component {
-    constructor(props){
-  		super(props);
-    }
     componentDidMount() {
     	this.props.FetchItems();
     }
@@ -16,7 +13,9 @@ class Home extends Component {
         var items = []
         this.props.items.results.map(value => {
           items.push(<EachItemInFrontPage item={value} key={value.id}/>)
+          return "STUPID WARNINGGGGGGGG"
         })
+
       }
       return (
   			<div className='body-content-wrapper'>

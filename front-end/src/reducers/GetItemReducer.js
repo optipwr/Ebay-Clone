@@ -4,6 +4,8 @@ export default function (state = [], action){
 			return action.payload
 		case 'GET_ITEM_DETAILS':
 			return action.payload
+		default:
+			
 	}
 	return state
 }

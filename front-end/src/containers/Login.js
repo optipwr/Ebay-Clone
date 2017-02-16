@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import EachItemInFrontPage from '../components/EachItemInFrontPage.js'
 import LoginAction from '../actions/LoginAction.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
@@ -23,12 +22,13 @@ class Login extends Component {
    }
    render() {
        // console.log(this.props.loginResponse.msg)
-       if(this.props.loginResponse.msg == 'noAccount'){
-         var message = 'That username does not exist'
-       }else if(this.props.loginResponse.msg == 'badPassword'){
-         var message = 'Welcome, ' + this.state.name
-       }else{
-         var message = ''
+       var message
+       if(this.props.loginResponse.msg === 'noAccount'){
+         message = 'That username does not exist'
+       }else if(this.props.loginResponse.msg === 'badPassword'){
+         message = 'You\'ve entered the wrong pasword'
+        }else{
+         message = ''
        }                
        return (
          <div className="login-form-wrapper">
@@ -38,11 +38,12 @@ class Login extends Component {
                Enter username and password to login
              </span>
            </div>          
-                   <form  className="text-center login-form" onSubmit={this.LoginInformation}>
-               <input type="text" className="form-control" placeholder="Username" name="" />
-               <input type="password" className="form-control" placeholder="Password" name="" />
-               <button type="submit" className="btn">Sign In</button>
-           </form>
+                <form  className="text-center login-form" onSubmit={this.LoginInformation}>
+                  <input type="text" className="form-control" placeholder="Username" name="" />
+                  <input type="password" className="form-control" placeholder="Password" name="" />
+                  {message}
+                  <button type="submit" className="btn">Sign In</button>
+                </form>
          </div>
        );
    }

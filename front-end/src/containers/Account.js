@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import EachItemInFrontPage from '../components/EachItemInFrontPage.js'
-import LoginAction from '../actions/LoginAction.js'
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 class Account extends Component {
