@@ -9,6 +9,7 @@ class App extends Component {
             	<div className='sign-in-nav-bar-wrapper'>
                     <div className='logo'><Link to='/'>Logo / Home</Link></div>
                     <div className='search-bar-wrapper'>
+                        <Link to="/account">My Account</Link> or
                         <Link to="/login">Sign in</Link> or
                         <Link to="/register">Register</Link>
                             &nbsp;&nbsp;&nbsp;
