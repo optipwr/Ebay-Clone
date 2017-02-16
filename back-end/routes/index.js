@@ -55,9 +55,9 @@ router.post('/register', (req, res, next) => {
   connection.query(selectQuery,[req.body.username], (error, results, fields) => {
     console.log(results)
     if(results.length === 0){
-      var insertUserQuery = 'INSERT INTO user (username, password) VALUES' +
-        "(?,?)";
-      connection.query(insertUserQuery, [req.body.username, bcrypt.hashSync(req.body.password)], (error, results, field) => {
+      var insertUserQuery = 'INSERT INTO user (name, email, username, password) VALUES' +
+        "(?,?,?,?)";
+      connection.query(insertUserQuery, [req.body.name, req.body.email, req.body.username, bcrypt.hashSync(req.body.password)], (error, results, field) => {
         res.json({msg: 'userInserted'})
       })
     }else{
