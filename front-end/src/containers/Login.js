@@ -27,6 +27,12 @@ class Login extends Component {
         console.log(this.props.loginResponse.msg)
         return (
           <div className="login-form-wrapper">
+            <div className='register-form-header'>
+              Login to our site<br/>
+              <span className='register-form-description'>
+                Enter username and password to login
+              </span>
+            </div>          
 			       <form  className="text-center login-form" onSubmit={this.LoginInformation}>
                 <input type="text" className="form-control" placeholder="Username" name="" />
                 <input type="password" className="form-control" placeholder="Password" name="" />

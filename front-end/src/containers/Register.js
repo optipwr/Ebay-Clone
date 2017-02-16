@@ -48,6 +48,13 @@ class Register extends Component {
 		var passwordMatchString = this.state.passwordMatchString
 		return(
 			<div className="register-form-wrapper">
+				<br/>
+				<div className='register-form-header'>
+					Sign up now<br/>
+					<span className='register-form-description'>
+						Fill in the form below to get instant access
+					</span>
+				</div>
 				<form className="text-center register-form" onSubmit={this.registerInformation} >
 					<input className="form-control" type="text" required name="name" placeholder="Full Name" />
 					<input className="form-control" type="email" required name="email" placeholder="Email" />
