@@ -37,17 +37,35 @@ router.get('/products/:id', function(req, res, next) {
   })
 })
 
-router.get('/login', (req, res, next) => {
-  const selectQuery = 'SELECT * FROM user WHERE username = ?';
-  console.log(req.query.username)
-  connection.query(selectQuery,[req.query.username], (error, results, fields) => {
+router.post('/login', (req, res, next) => {
+  // const selectQuery = 'SELECT * FROM user WHERE username = ?';
+  // console.log(req.query.username)
+  // connection.query(selectQuery,[req.query.username], (error, results, fields) => {
+  //   if(results.length === 0){
+  //     res.json({msg: 'noAccount'})
+  //   }else{
+  //     res.json({msg: "loggedIn"})
+  //   }
+  // })
+  var username = req.body.username;
+  var password = req.body.password;
+  var findUserQuery = "SELECT * FROM user WHERE username = ?";
+  connection.query(findUserQuery, [username], (error, results, fields)=>{
+    if(error) throw error;
     if(results.length === 0){
-      res.json({msg: 'noAccount'})
-    }else{
-      res.json({msg: "loggedIn"})
+      res.json({
+        msg: "badUsername"
+      })
     }
-  })
-})
+    else{
+      // This is a valid username(we know because reults.length is > 0)
+      var checkHash = bcrypt.compareSync(password, results[0].password);
+      res.json({
+        msg: "foundUser"
+      })
+    }
+  });
+});
 
 // Make a register post route
 router.post('/register', (req, res, next) => {

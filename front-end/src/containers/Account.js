@@ -15,15 +15,15 @@ class Account extends Component {
 }
 
 function mapStateToProps(state){
-  return{
-    loginResponse: state.login
-  }
+  // return{
+  //   loginResponse: state.login
+  // }
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({
-    LoginAction
-  }, dispatch)
+  // return bindActionCreators({
+  //   LoginAction
+  // }, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);
