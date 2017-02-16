@@ -7,7 +7,7 @@ import Login from './containers/Login.js';
 import Register from './containers/Register.js';
 import Account from './containers/Account.js';
 import '../public/stylesheets/styles.css';
-import { Router, Route, hashHistory, IndexRoute } from 'react-router';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import reducers from './reducers/index.js'
@@ -17,7 +17,7 @@ const theStoreWithMiddleware = applyMiddleware(reduxPromise)(createStore)(reduce
 
 ReactDOM.render(
 	<Provider store={theStoreWithMiddleware}>
-		<Router history={hashHistory}>
+		<Router history={browserHistory}>
 			<Route path="/" component={App}>
 				<IndexRoute component={Home} />
 				<Route path="products/:id" component={Product} />
