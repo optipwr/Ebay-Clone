@@ -9,7 +9,7 @@ var connection = mysql.createConnection({
  database: config.database
 })
 var randtoken = require('rand-token')
-connection.connect();
+
 
 var bcrypt = require('bcrypt-nodejs');
 
@@ -25,8 +25,9 @@ router.get('/', function(req, res, next) {
  connection.query(selectQuery, (error, results, field) => {
    if (error) throw error;
    res.send({ results });
- });
+  });
 });
+
 
 router.get('/products/:id', function(req, res, next) {
  const itemId = req.params.id;
@@ -34,7 +35,7 @@ router.get('/products/:id', function(req, res, next) {
  connection.query(selectQuery, (error, results, field) => {
    if (error) throw error;
    res.send({ results });
- })
+ }) 
 })
 
 router.post('/login', (req, res, next) => {
@@ -44,14 +45,17 @@ router.post('/login', (req, res, next) => {
  connection.query(selectQuery,[username], (error, results, fields) => {
    if(results.length === 0){
      res.json({msg: 'noAccount'})
+     console.log('############')
+     console.log('Wrong username')
+     console.log('############')     
    }else{
      
      checkHash = bcrypt.compareSync(password, results[0].password);
-     // console.log('############')
-     // console.log(checkHash)
-     // console.log('############')
      if(checkHash == false){
        res.json({msg: "badPassword"});
+     console.log('############')
+     console.log('Wrong Password')
+     console.log('############')       
      }else{
        var token = randtoken.uid(40);
        insertToken = "UPDATE user SET token=?, token_exp=DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE username=?";
@@ -61,7 +65,8 @@ router.post('/login', (req, res, next) => {
      console.log('############')
          res.json({
            msg:'foundUser',
-           token: token
+           token: token,
+           username: username
          })    
        })
      }
@@ -85,5 +90,17 @@ router.post('/register', (req, res, next) => {
    }
  })
 });
+
+
+router.get('/account/:username', function(req, res, next) {
+ const selectQuery = 'SELECT * FROM user WHERE username = ?';
+ connection.query(selectQuery, [req.params.username], (error, results, field) => {
+   if (error) throw error;
+   res.send({ results });
+   // console.log('ACCOUNT PAGEEE')
+ }) 
+})
+
+
 
 module.exports = router;

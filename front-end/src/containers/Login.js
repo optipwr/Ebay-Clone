@@ -18,7 +18,10 @@ class Login extends Component {
        username: userName,
        password: password
      });
-     browserHistory.push('/');
+     
+   }
+   componentDidUpdate(prevProps, prevState) {
+    if(this.props.loginResponse.msg==='foundUser'){browserHistory.push('/');}
    }
    render() {
        // console.log(this.props.loginResponse.msg)

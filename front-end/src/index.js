@@ -23,7 +23,7 @@ ReactDOM.render(
 				<Route path="products/:id" component={Product} />
 				<Route path="login" component={Login} />
 				<Route path="register" component={Register} />
-				<Route path="account" component={Account} />
+				<Route path="account/:username" component={Account} />
 			</Route>
 		</Router>
 	</Provider>,
