@@ -11,6 +11,14 @@ var connection = mysql.createConnection({
 
 connection.connect();
 
+var bcrypt = require('bcrypt-nodejs');
+
+//Test route to test bcrypt
+// var hashedPassword = bcrypt.hashSync("x");
+// console.log(hashedPassword);
+// var checkHash = bcrypt.compareSync("x", hashedPassword);
+// console.log(checkHash);
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   const selectQuery = 'SELECT * FROM item';
@@ -49,7 +57,7 @@ router.post('/register', (req, res, next) => {
     if(results.length === 0){
       var insertUserQuery = 'INSERT INTO user (username, password) VALUES' +
         "(?,?)";
-      connection.query(insertUserQuery, [req.body.username, req.body.password], (error, results, field) => {
+      connection.query(insertUserQuery, [req.body.username, bcrypt.hashSync(req.body.password)], (error, results, field) => {
         res.json({msg: 'userInserted'})
       })
     }else{
