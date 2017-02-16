@@ -13,8 +13,32 @@ class Product extends Component {
     }
     render() {
         return (
-			<div className='body-content-wrapper'>
-                {this.props.item.name}
+			  <div className='body-content-wrapper'>
+          <div className="col-xs-12">
+            <h2 className="text-center">{this.props.item.name}</h2>
+          </div>
+          <div className="col-xs-12">
+            <div className="row">
+              <div className="col-md-4">
+                <img className="img-responsive" src={this.props.item.image_url}/>
+              </div>
+              <div className="col-md-8">
+                <div className="row">
+                  <div className="col-xs-12">
+                    {this.props.item.buy_now_price}
+                  </div>
+                  <div className="col-xs-12">
+                    <button className="btn">BUY NOW</button>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-xs-12">
+                    {this.props.item.description}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
     		</div>
         );
     }
