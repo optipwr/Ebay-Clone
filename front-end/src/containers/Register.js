@@ -31,11 +31,11 @@ class Register extends Component {
 			var message = ''
 		}
 		return(
-			<div>
-				<form onSubmit={this.registerInformation} >
-					<input type="text" name="username" placeholder="Username" />
-					<input type="password" name="password" placeholder="Password" />
-					<input type="submit" value="Register" />
+			<div className="register-form-wrapper">
+				<form className="text-center register-form" onSubmit={this.registerInformation} >
+					<input className="form-control" type="text" name="username" placeholder="Username" />
+					<input className="form-control" type="password" name="password" placeholder="Password" />
+					<button className="btn btn-primary" type="submit" value="Register">Register</button>
 					<h1>{message}</h1>
 				</form>
 			</div>

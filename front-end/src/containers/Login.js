@@ -26,20 +26,13 @@ class Login extends Component {
     render() {
         console.log(this.props.loginResponse.msg)
         return (
-			<form  className="form-inline" onSubmit={this.LoginInformation} method="get">
-              <div className="form-group">
-              </div>
-                <div className="form-group">
-                    <label className="sr-only">Sign In</label>
-                    <div className="input-group">
-                        <input type="text" className="form-control" placeholder="User Name" name="" />
-                    </div>
-                    <div className="input-group">
-                        <input type="password" className="form-control" placeholder="Password" name="" />
-                    </div>
-                </div>
-                <button type="submit" className="btn btn-primary">Sign In</button>
+          <div className="login-form-wrapper">
+			       <form  className="text-center login-form" onSubmit={this.LoginInformation}>
+                <input type="text" className="form-control" placeholder="Username" name="" />
+                <input type="password" className="form-control" placeholder="Password" name="" />
+                <button type="submit" className="btn">Sign In</button>
             </form>
+          </div>
         );
     }
 }
