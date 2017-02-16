@@ -5,18 +5,21 @@ import { Link } from 'react-router';
 class App extends Component {
     render() {
         return (
-            <div className='container ebay-wrapper'>
+            <div className='ebay-wrapper'>
             	<div className='sign-in-nav-bar-wrapper'>
-                    <Link to="/login">
-                        Log in
-                    </Link>
+                    <div className='logo'><Link to='/'>Logo / Home</Link></div>
+                    <div className='search-bar-wrapper'>
+                        <Link to="/login">Sign in</Link> or
+                        <Link to="/register">Register</Link>
+                            &nbsp;&nbsp;&nbsp;
+                        <form>
+                            <input type='text' placeholder=" &nbsp;Search Items"/>
+                            <button className='btn btn-warning'>Search</button>
+                        </form>
+                    </div>
             	</div>
             	<div className='body-wrapper'>
-            		<div className='search-bar-wrapper'>
-            			Logo goes here
-            			<input type='text' placeholder="Search..."/>
-            			<button className='btn btn-primary'>Search</button>
-            		</div>
+            		
                     {this.props.children}
             	</div>
 			</div>
