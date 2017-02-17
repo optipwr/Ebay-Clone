@@ -1,13 +1,36 @@
 import React, {Component} from 'react';
 import FetchItemDetails from '../actions/FetchItemDetails.js'
+import SubmitBidAction from '../actions/SubmitBidAction.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
 
 class Product extends Component {
-    componentDidMount() {
-    	this.props.FetchItemDetails(this.props.params.id);
-      // console.log(this.props)
+	constructor(props) {
+    	super(props);
+    	this.submitBid = this.submitBid.bind(this);
+	}
+	componentDidMount() {
+		this.props.FetchItemDetails(this.props.params.id);
     }
+    submitBid(event){
+		event.preventDefault();
+
+		if(this.props.userToken === undefined){
+			// go back to log in page
+		}else{
+			var bidAmount = event.target[0].value;
+			var auctionItem = this.props.item.results[0]
+			if(auctionItem.current_bid === null){
+				auctionItem.current_bid = auctionItem.starting_bid - 0.01;
+			}
+			if(bidAmount < auctionItem.current_bid){
+				console.log("Bid Too Low")
+			}else{
+				console.log("Submit to Express")
+				this.props.submitBidToExpress(bidAmount, auctionItem.id, this.props.userToken)
+			}
+		}
+	}
     render() {
       var item = {name: '', description: '', image_url: '', buy_now_price: ''}
       if(this.props.item !== null){
@@ -27,15 +50,22 @@ class Product extends Component {
               <div className="col-md-8">
                 <div className="row">
                   <div className="col-xs-12">
-                    {item.buy_now_price}
-                  </div>
-                  <div className="col-xs-12">
-                    <button className="btn">BUY NOW</button>
+                    
                   </div>
                 </div>
                 <div className="row">
                   <div className="col-xs-12">
                     {item.description}
+                  </div>
+                  <div className="col-xs-12 bid-description">
+                    <p>Starting Bid: {item.starting_bid}</p>
+                    <p>Current Bid: {item.current_bid}</p>
+                    <p>Current Highest Bidder: {item.high_bidder_id}</p>
+                    <p>Buy Now Price: {item.buy_now_price}</p>
+                    <form onSubmit={this.submitBid}>
+                      <input type="number" placeholder="Enter your bid"/>
+                      <button>Bid</button>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -49,13 +79,15 @@ class Product extends Component {
 // go to all. like the array map function
 function mapStateToProps(state){
 	return{
-		item: state.getItem
+		item: state.getItem,
+    	userToken: state.login.token
 	}
 }
 
 function mapDispatchToProps(dispatch){
 	return bindActionCreators({
-		FetchItemDetails : FetchItemDetails
+		FetchItemDetails : FetchItemDetails,
+    	submitBidToExpress: SubmitBidAction
 		// FetchItems: FetchItems
 	}, dispatch)
 }

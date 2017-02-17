@@ -101,6 +101,14 @@ router.get('/account/:username', function(req, res, next) {
  }) 
 })
 
-
+router.post('/submitBid/', function(req, res, next) {
+ // const selectQuery = 'SELECT * FROM user WHERE username = ?';
+ // connection.query(selectQuery, [req.params.username], (error, results, field) => {
+   // if (error) throw error;
+   console.log(req.body)
+   res.json(req.body);
+   // console.log('ACCOUNT PAGEEE')
+ // }) 
+})
 
 module.exports = router;

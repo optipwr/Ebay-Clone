@@ -5,7 +5,7 @@ export default function (state = null, action){
 		case 'GET_ITEM_DETAILS':
 			return action.payload
 		default:
-			
+		return state			
 	}
-	return state
+
 }
