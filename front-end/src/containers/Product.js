@@ -28,6 +28,9 @@ class Product extends Component {
 			}else{
 				console.log("Submit to Express")
 				this.props.submitBidToExpress(bidAmount, auctionItem.id, this.props.userToken)
+				console.log("B-Amount: " + bidAmount)
+				console.log("auctionItem.id: "  + auctionItem.id)
+				console.log("B-Amount" + this.props.userToken)
 			}
 		}
 	}
