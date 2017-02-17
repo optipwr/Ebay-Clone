@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 
 class EachItemInFrontPage extends Component {
     render() {
@@ -21,17 +21,17 @@ class EachItemInFrontPage extends Component {
     }
 }
 
-function mapStateToProps(state){
+// function mapStateToProps(state){
   // return{
   //   items: state.getItem
   // }
-}
+// }
 
-function mapDispatchToProps(dispatch){
+// function mapDispatchToProps(dispatch){
   // return bindActionCreators({
   //   FetchItems
   //   // FetchItems: FetchItems
   // }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EachItemInFrontPage);
+// }
+export default EachItemInFrontPage
+// export default connect(mapStateToProps, mapDispatchToProps)(EachItemInFrontPage);

@@ -9,7 +9,7 @@ class Home extends Component {
     	this.props.FetchItems();
     }
     render() {
-      if(this.props.items.results !== undefined){
+      if(this.props.items !== null){
         var items = []
         this.props.items.results.map(value => {
           items.push(<EachItemInFrontPage item={value} key={value.id}/>)

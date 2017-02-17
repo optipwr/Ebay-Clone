@@ -2,13 +2,12 @@ import React, {Component} from 'react';
 import FetchAccount from '../actions/FetchAccount.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
+// import { browserHistory } from 'react-router'
 
 class Account extends Component {
     componentDidMount() {
       this.props.FetchAccount(this.props.params.username);
-      console.log(this.props.params.username)
-
+      // console.log(this.props.params.username)
     }     
     render() {
       var accountName = ''
