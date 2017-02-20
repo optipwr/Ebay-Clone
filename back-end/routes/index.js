@@ -3,10 +3,8 @@ var mysql = require('mysql');
 var config = require('../config/config');
 var router = express.Router();
 var randtoken = require('rand-token')
-<<<<<<< HEAD
 var stripe = require("stripe")("sk_test_FygthOr48kXOT32LHupAhrAA");
-=======
->>>>>>> 5800bfc29342fca3cd5e846f56fbbaaad3538b9e
+
 var pool = mysql.createPool({
     host: config.host,
     user: config.userName,
@@ -163,7 +161,7 @@ router.post('/submitBid/', function(req, res, next) {
         connection.release()                
     })
 })
-<<<<<<< HEAD
+
 
 router.post('/stripe', function(req, res, next) {
     // run a query against req.body.token to make sure this person is logged in
@@ -182,6 +180,5 @@ router.post('/stripe', function(req, res, next) {
         }
     );    
 })
-=======
->>>>>>> 5800bfc29342fca3cd5e846f56fbbaaad3538b9e
+
 module.exports = router;
