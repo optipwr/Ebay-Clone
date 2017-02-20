@@ -15,7 +15,11 @@
     "morgan": "~1.7.0",
     "mysql": "^2.13.0",
     "rand-token": "^0.3.0",
+<<<<<<< HEAD
     "serve-favicon": "~2.3.0",
     "stripe": "^4.15.0"
+=======
+    "serve-favicon": "~2.3.0"
+>>>>>>> 5800bfc29342fca3cd5e846f56fbbaaad3538b9e
   }
 }
