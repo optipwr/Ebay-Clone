@@ -3,6 +3,7 @@ import FetchItemDetails from '../actions/FetchItemDetails.js'
 import SubmitBidAction from '../actions/SubmitBidAction.js'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'
+import $ from 'jquery'
 
 class Product extends Component {
 	constructor(props) {
@@ -34,6 +35,37 @@ class Product extends Component {
 			}
 		}
 	}
+  makePayment(){
+    var handler = window.StripeCheckout.configure({
+      key: 'pk_test_M15Qplc1eweA2bEYWObtN0LT',
+      locale: 'auto',
+      token: function(token){
+        console.log(token)
+        var theData = {
+          amount: 10 * 100,
+          stripeToken: token.id,
+          token: localStorage.getItem('token')
+          // token: this.props.token
+        }
+        $.ajax({
+          method:"POST",
+          url:'http://localhost:3000/stripe',
+          data:theData
+        }).done((data) => {
+          console.log(data);
+          //this should print out Object({msg:'paymentSuccess'})
+        })
+      }
+    })
+
+
+    handler.open({
+      name: "Buy stuff from my auction site",
+      description: "Pay for your auction",
+      amount: 10 * 100
+      // image: 'http://www.url'
+    })
+  }
     render() {
       var item = {name: '', description: '', image_url: '', buy_now_price: ''}
       if(this.props.item !== null){
@@ -69,6 +101,7 @@ class Product extends Component {
                       <input type="number" placeholder="Enter your bid"/>
                       <button>Bid</button>
                     </form>
+                    <button className='btn btn-primary' onClick={this.makePayment}> Pay my auction </button>
                   </div>
                 </div>
               </div>
